@@ -1,163 +1,254 @@
-
+<?php
+// Handle simple contact form submission
+$messageSent = false;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name'] ?? '');
+    $email = htmlspecialchars($_POST['email'] ?? '');
+    $message = htmlspecialchars($_POST['message'] ?? '');
+    // In production, mail() or an SMTP library would process this data here
+    $messageSent = true;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Hon. Rolly P. Bagayan</title>
-  <style>
-    /* Basic Page Styling */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem;
-      background-color: #f8f9fa;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolly P. Bagayan | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 2px solid #e0e0e0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    header h1 {
-      margin: 0 0 0.5rem 0;
-      color: #1a1a1a;
-      font-size: 2.2rem;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-    header p {
-      margin: 0;
-      color: #666;
-      font-size: 1.1rem;
-    }
-    
-    /* Button Styles */
-    .filter-btn {
-      padding: 8px 16px;
-      cursor: pointer;
-      border: 1px solid #ccc;
-      background: white;
-      border-radius: 4px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background-color: rgba(15, 23, 42, 0.9);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(8px);
+        }
 
-    .filter-btn:hover {
-      background: #e9ecef;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
 
-    .filter-btn.active {
-      background: #0066cc;
-      color: white;
-      border-color: #0066cc;
-    }
-    
-    /* Card Hover Effect */
-    .portfolio-card {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
 
-    .portfolio-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
-  </style>
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: #0f172a;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .skills-grid, .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .alert {
+            padding: 1rem;
+            background-color: #10b981;
+            color: white;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #334155;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Hon. Rolly P. Bagayan</h1>
-    <p>Projects & Community Initiatives Portfolio</p>
-  </header>
-  
-  <!-- Portfolio Container -->
-  <div id="portfolio-root"></div>
+    <nav>
+        <div class="logo">RPB</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-  <script>
-    function createPortfolio(items, targetId) {
-      const container = document.getElementById(targetId);
-      if (!container) return;
+    <header class="hero">
+        <h1>Hi, I'm <span>Rolly P. Bagayan</span></h1>
+        <p>A passionate Web Developer dedicated to building clean, modern, and user-friendly digital experiences.</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </header>
 
-      const categories = ['All', ...new Set(items.map(item => item.category))];
-
-      container.innerHTML = `
-        <div class="portfolio-wrapper">
-          <div class="portfolio-filters" style="display: flex; gap: 10px; margin-bottom: 25px; justify-content: center;">
-            ${categories.map(cat => `
-              <button class="filter-btn ${cat === 'All' ? 'active' : ''}" data-category="${cat}">
-                ${cat}
-              </button>
-            `).join('')}
-          </div>
-          <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-          </div>
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="card">
+            <p>Welcome to my portfolio! I am Rolly P. Bagayan. I enjoy solving problems through code and designing efficient software applications. I continuously learn new tech stacks to build scalable web applications.</p>
         </div>
-      `;
+    </section>
 
-      const grid = container.querySelector('.portfolio-grid');
-      const buttons = container.querySelectorAll('.filter-btn');
+    <section id="skills" class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="card">
+                <h3>Frontend</h3>
+                <p>HTML5, CSS3, JavaScript, Responsive Web Design</p>
+            </div>
+            <div class="card">
+                <h3>Backend</h3>
+                <p>PHP, MySQL, Database Management, REST APIs</p>
+            </div>
+            <div class="card">
+                <h3>Tools</h3>
+                <p>Git, GitHub, VS Code, Local Server Management</p>
+            </div>
+        </div>
+    </section>
 
-      const renderGrid = (filter) => {
-        const filteredItems = filter === 'All' 
-          ? items 
-          : items.filter(item => item.category === filter);
+    <section id="projects" class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="card">
+                <h3>Project One</h3>
+                <p>A web application focused on streamlining user workflows and managing data efficiently.</p>
+            </div>
+            <div class="card">
+                <h3>Project Two</h3>
+                <p>An interactive dynamic web portal powered by custom PHP backends and responsive design.</p>
+            </div>
+        </div>
+    </section>
 
-        grid.innerHTML = filteredItems.map(item => `
-          <article class="portfolio-card" style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; background: #fff;">
-            <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 4px;">
-            <h3 style="margin: 14px 0 6px; font-size: 1.2rem;">${item.title}</h3>
-            <p style="font-size: 0.9rem; color: #555; margin-bottom: 14px; min-height: 40px;">${item.description}</p>
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; font-weight: bold; text-decoration: none;">
-              View Details &rarr;
-            </a>
-          </article>
-        `).join('');
-      };
+    <section id="contact" class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <?php if ($messageSent): ?>
+            <div class="alert">Thank you, <?php echo $name; ?>! Your message has been sent successfully.</div>
+        <?php endif; ?>
+        <form action="#contact" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
 
-      buttons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          buttons.forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-          renderGrid(e.target.dataset.category);
-        });
-      });
-
-      renderGrid('All');
-    }
-
-    // Projects Data
-    const projects = [
-      {
-        title: 'Barangay Administrative Portal',
-        category: 'Governance',
-        description: 'System for efficient document issuance and resident verification.',
-        image: 'https://via.placeholder.com/300x160',
-        link: '#'
-      },
-      {
-        title: 'Community Development Program',
-        category: 'Community Work',
-        description: 'Local development and welfare projects for residents.',
-        image: 'https://via.placeholder.com/300x160',
-        link: '#'
-      },
-      {
-        title: 'Public Services Integration',
-        category: 'Governance',
-        description: 'Streamlining official barangay clearances and certificates.',
-        image: 'https://via.placeholder.com/300x160',
-        link: '#'
-      }
-    ];
-
-    // Initialize the portfolio grid
-    createPortfolio(projects, 'portfolio-root');
-  </script>
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> Rolly P. Bagayan. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
