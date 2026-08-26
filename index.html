@@ -1,253 +1,287 @@
-<?php
-// Handle simple contact form submission
-$messageSent = false;
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name'] ?? '');
-    $email = htmlspecialchars($_POST['email'] ?? '');
-    $message = htmlspecialchars($_POST['message'] ?? '');
-    // In production, mail() or an SMTP library would process this data here
-    $messageSent = true;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rolly P. Bagayan | Portfolio</title>
+    <title>Developer Portfolio</title>
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent-color: #38bdf8;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 10%;
-            background-color: rgba(15, 23, 42, 0.9);
-            position: sticky;
-            top: 0;
-            backdrop-filter: blur(8px);
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: var(--accent-color);
         }
 
         .nav-links {
-            display: flex;
             list-style: none;
+            display: flex;
             gap: 1.5rem;
         }
 
         .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
+            color: #ffffff;
+            font-weight: 500;
         }
 
         .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            color: #ffffff;
+            padding: 5rem 1.5rem;
             text-align: center;
-            padding: 6rem 1rem;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
-        }
-
-        .hero span {
-            color: var(--accent-color);
         }
 
         .hero p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
         }
 
         .btn {
-            background-color: var(--accent-color);
-            color: #0f172a;
+            display: inline-block;
+            background-color: #0066cc;
+            color: #ffffff;
             padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
+            border-radius: 4px;
             font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s;
         }
 
         .btn:hover {
-            opacity: 0.9;
+            background-color: #0052a3;
+            text-decoration: none;
         }
 
-        .container {
-            max-width: 1000px;
+        section {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 4rem 1rem;
+            padding: 4rem 1.5rem;
         }
 
         .section-title {
-            text-align: center;
             font-size: 2rem;
             margin-bottom: 2rem;
+            text-align: center;
             position: relative;
         }
 
-        .skills-grid, .projects-grid {
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #0066cc;
+            margin: 0.5rem auto 0;
+        }
+
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
+            background-color: #ffffff;
             border-radius: 8px;
-            border: 1px solid #334155;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .card h3 {
-            color: var(--accent-color);
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: #e6f0fa;
+            color: #0066cc;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-card h3 {
             margin-bottom: 0.5rem;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: 6px;
-            border: 1px solid #334155;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-        }
-
-        .alert {
-            padding: 1rem;
-            background-color: #10b981;
-            color: white;
-            border-radius: 6px;
-            text-align: center;
+        .project-card p {
+            color: #666;
             margin-bottom: 1rem;
         }
 
-        footer {
-            text-align: center;
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
             padding: 2rem;
-            border-top: 1px solid #334155;
-            color: var(--text-muted);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #888888;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">RPB</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <header class="hero">
-        <h1>Hi, I'm <span>Rolly P. Bagayan</span></h1>
-        <p>A passionate Web Developer dedicated to building clean, modern, and user-friendly digital experiences.</p>
-        <a href="#projects" class="btn">View My Work</a>
+    <header>
+        <nav>
+            <div class="logo">Alex Doe</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="about" class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="card">
-            <p>Welcome to my portfolio! I am Rolly P. Bagayan. I enjoy solving problems through code and designing efficient software applications. I continuously learn new tech stacks to build scalable web applications.</p>
-        </div>
-    </section>
+    <main>
+        <section class="hero">
+            <h1>Hi, I'm Alex Doe</h1>
+            <p>Full-Stack Web Developer & UI/UX Designer</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </section>
 
-    <section id="skills" class="container">
-        <h2 class="section-title">Skills & Expertise</h2>
-        <div class="skills-grid">
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
             <div class="card">
-                <h3>Frontend</h3>
-                <p>HTML5, CSS3, JavaScript, Responsive Web Design</p>
+                <p>I am a passionate software developer with 4+ years of experience building responsive, user-friendly websites and web applications. I love turning complex problems into simple, elegant code.</p>
             </div>
-            <div class="card">
-                <h3>Backend</h3>
-                <p>PHP, MySQL, Database Management, REST APIs</p>
-            </div>
-            <div class="card">
-                <h3>Tools</h3>
-                <p>Git, GitHub, VS Code, Local Server Management</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="container">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
+        <section id="skills">
+            <h2 class="section-title">Skills</h2>
             <div class="card">
-                <h3>Project One</h3>
-                <p>A web application focused on streamlining user workflows and managing data efficiently.</p>
+                <ul class="skills-list">
+                    <li class="skill-tag">HTML5</li>
+                    <li class="skill-tag">CSS3</li>
+                    <li class="skill-tag">JavaScript</li>
+                    <li class="skill-tag">React</li>
+                    <li class="skill-tag">Node.js</li>
+                    <li class="skill-tag">Python</li>
+                    <li class="skill-tag">Git</li>
+                    <li class="skill-tag">SQL</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Project Two</h3>
-                <p>An interactive dynamic web portal powered by custom PHP backends and responsive design.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="container">
-        <h2 class="section-title">Get In Touch</h2>
-        <?php if ($messageSent): ?>
-            <div class="alert">Thank you, <?php echo $name; ?>! Your message has been sent successfully.</div>
-        <?php endif; ?>
-        <form action="#contact" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
-    </section>
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="grid">
+                <article class="card project-card">
+                    <h3>E-Commerce Dashboard</h3>
+                    <p>A real-time analytics dashboard built for online merchants to track sales, inventory, and customer activity.</p>
+                    <a href="#">View Code &rarr;</a>
+                </article>
+                <article class="card project-card">
+                    <h3>Task Management App</h3>
+                    <p>A drag-and-drop task organization tool allowing teams to collaborate and manage sprint projects efficiently.</p>
+                    <a href="#">View Code &rarr;</a>
+                </article>
+                <article class="card project-card">
+                    <h3>Weather Forecast Hub</h3>
+                    <p>A clean web app providing 7-day weather updates using dynamic third-party API integration and geotargeting.</p>
+                    <a href="#">View Code &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="border:none; cursor:pointer; width:100%;">Send Message</button>
+            </form>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> Rolly P. Bagayan. All rights reserved.</p>
+        <p>&copy; 2026 Alex Doe. All rights reserved.</p>
     </footer>
 
 </body>
