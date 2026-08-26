@@ -1,1 +1,163 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Hon. Rolly P. Bagayan</title>
+  <style>
+    /* Basic Page Styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      color: #1a1a1a;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 0;
+      color: #666;
+      font-size: 1.1rem;
+    }
+    
+    /* Button Styles */
+    .filter-btn {
+      padding: 8px 16px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background: white;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      background: #e9ecef;
+    }
+
+    .filter-btn.active {
+      background: #0066cc;
+      color: white;
+      border-color: #0066cc;
+    }
+    
+    /* Card Hover Effect */
+    .portfolio-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hon. Rolly P. Bagayan</h1>
+    <p>Projects & Community Initiatives Portfolio</p>
+  </header>
+  
+  <!-- Portfolio Container -->
+  <div id="portfolio-root"></div>
+
+  <script>
+    function createPortfolio(items, targetId) {
+      const container = document.getElementById(targetId);
+      if (!container) return;
+
+      const categories = ['All', ...new Set(items.map(item => item.category))];
+
+      container.innerHTML = `
+        <div class="portfolio-wrapper">
+          <div class="portfolio-filters" style="display: flex; gap: 10px; margin-bottom: 25px; justify-content: center;">
+            ${categories.map(cat => `
+              <button class="filter-btn ${cat === 'All' ? 'active' : ''}" data-category="${cat}">
+                ${cat}
+              </button>
+            `).join('')}
+          </div>
+          <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          </div>
+        </div>
+      `;
+
+      const grid = container.querySelector('.portfolio-grid');
+      const buttons = container.querySelectorAll('.filter-btn');
+
+      const renderGrid = (filter) => {
+        const filteredItems = filter === 'All' 
+          ? items 
+          : items.filter(item => item.category === filter);
+
+        grid.innerHTML = filteredItems.map(item => `
+          <article class="portfolio-card" style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; background: #fff;">
+            <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 4px;">
+            <h3 style="margin: 14px 0 6px; font-size: 1.2rem;">${item.title}</h3>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 14px; min-height: 40px;">${item.description}</p>
+            <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; font-weight: bold; text-decoration: none;">
+              View Details &rarr;
+            </a>
+          </article>
+        `).join('');
+      };
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          buttons.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          renderGrid(e.target.dataset.category);
+        });
+      });
+
+      renderGrid('All');
+    }
+
+    // Projects Data
+    const projects = [
+      {
+        title: 'Barangay Administrative Portal',
+        category: 'Governance',
+        description: 'System for efficient document issuance and resident verification.',
+        image: 'https://via.placeholder.com/300x160',
+        link: '#'
+      },
+      {
+        title: 'Community Development Program',
+        category: 'Community Work',
+        description: 'Local development and welfare projects for residents.',
+        image: 'https://via.placeholder.com/300x160',
+        link: '#'
+      },
+      {
+        title: 'Public Services Integration',
+        category: 'Governance',
+        description: 'Streamlining official barangay clearances and certificates.',
+        image: 'https://via.placeholder.com/300x160',
+        link: '#'
+      }
+    ];
+
+    // Initialize the portfolio grid
+    createPortfolio(projects, 'portfolio-root');
+  </script>
+
+</body>
+</html>
