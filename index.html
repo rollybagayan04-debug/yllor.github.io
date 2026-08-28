@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Rolly P. Bagayan | Portfolio</title>
 
     <style>
@@ -10,117 +11,183 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background: #f4f6f8;
-            color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #222;
             line-height: 1.6;
         }
 
-        header {
-            background: #1e3a8a;
-            color: white;
-            padding: 20px 10%;
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #0b132b;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
-        header h1 {
-            font-size: 24px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
+        nav .logo {
+            color: #fff;
+            font-size: 22px;
             font-weight: bold;
         }
 
-        nav a:hover {
-            color: #93c5fd;
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
         }
 
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #5bc0be;
+        }
+
+        /* HERO */
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0b132b, #1c2541, #3a506b);
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, #dbeafe, #eff6ff);
-            padding: 40px 20px;
+            padding: 100px 20px 50px;
         }
 
         .hero-content {
-            max-width: 700px;
+            max-width: 800px;
         }
 
-        /* Profile picture */
+        /* PROFILE IMAGE */
         .profile-picture {
             width: 180px;
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 6px solid white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
+            border: 6px solid #5bc0be;
+            margin-bottom: 25px;
+            background: #ddd;
         }
 
-        .hero h2 {
-            font-size: 42px;
-            color: #1e3a8a;
+        .hero h1 {
+            font-size: 48px;
             margin-bottom: 10px;
         }
 
+        .hero h1 span {
+            color: #5bc0be;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
         .hero p {
-            font-size: 20px;
-            color: #555;
+            font-size: 17px;
+            color: #ddd;
+            margin-bottom: 30px;
         }
 
         .btn {
             display: inline-block;
-            margin-top: 25px;
+            background: #5bc0be;
+            color: #0b132b;
             padding: 12px 25px;
-            background: #1e3a8a;
-            color: white;
+            border-radius: 30px;
             text-decoration: none;
-            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
         .btn:hover {
-            background: #2563eb;
+            background: white;
+            transform: translateY(-3px);
         }
 
+        /* GENERAL SECTION */
         section {
-            padding: 70px 10%;
+            padding: 80px 8%;
         }
 
-        section h2 {
+        .section-title {
             text-align: center;
-            color: #1e3a8a;
-            margin-bottom: 35px;
-            font-size: 32px;
+            margin-bottom: 50px;
         }
 
+        .section-title h2 {
+            font-size: 35px;
+            color: #0b132b;
+        }
+
+        .section-title p {
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* ABOUT */
         .about {
             background: white;
-            text-align: center;
         }
 
-        .about p {
-            max-width: 800px;
+        .about-container {
+            max-width: 1000px;
             margin: auto;
-            font-size: 18px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
 
+        .about-text h3 {
+            color: #1c2541;
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .personal-info {
+            background: #f4f7fb;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .personal-info p {
+            margin-bottom: 10px;
+        }
+
+        .personal-info strong {
+            color: #0b132b;
+        }
+
+        /* EDUCATION */
         .education {
-            background: #f4f6f8;
+            background: #f4f7fb;
         }
 
         .education-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
         }
 
@@ -128,58 +195,194 @@
             background: white;
             padding: 25px;
             margin-bottom: 20px;
-            border-left: 5px solid #1e3a8a;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 5px solid #5bc0be;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateX(5px);
         }
 
         .education-card h3 {
-            color: #1e3a8a;
+            color: #0b132b;
             margin-bottom: 5px;
         }
 
+        .education-card .school {
+            color: #5bc0be;
+            font-weight: bold;
+        }
+
+        .education-card .year {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* SKILLS */
         .skills {
             background: white;
         }
 
         .skills-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 30px;
+            text-align: center;
+            background: #f4f7fb;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            background: #0b132b;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .skill-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+        }
+
+        /* PROJECTS */
+        .projects {
+            background: #f4f7fb;
+        }
+
+        .projects-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            height: 180px;
+            background: linear-gradient(135deg, #1c2541, #5bc0be);
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .skill {
-            background: #1e3a8a;
+            align-items: center;
             color: white;
-            padding: 12px 20px;
-            border-radius: 20px;
+            font-size: 50px;
         }
 
-        .contact {
-            background: #dbeafe;
-            text-align: center;
-        }
-
-        footer {
-            background: #1e3a8a;
-            color: white;
-            text-align: center;
+        .project-content {
             padding: 20px;
         }
 
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
+        .project-content h3 {
+            color: #0b132b;
+            margin-bottom: 8px;
+        }
+
+        .project-content p {
+            color: #666;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #0b132b;
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-container p {
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            display: grid;
+            gap: 15px;
+        }
+
+        .contact-item {
+            background: #1c2541;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050914;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
                 gap: 10px;
             }
 
-            nav a {
-                margin: 5px;
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
             }
 
             .hero h2 {
-                font-size: 32px;
+                font-size: 20px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 5%;
             }
         }
     </style>
@@ -187,112 +390,405 @@
 
 <body>
 
-    <!-- Navigation -->
-    <header>
-        <h1>Rolly P. Bagayan</h1>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Rolly P. Bagayan</div>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <!-- Home -->
+
+    <!-- HOME -->
     <section class="hero" id="home">
+
         <div class="hero-content">
 
-            <!-- CHANGE THIS TO YOUR PICTURE -->
-            <img 
-                src="profile.jpg" 
+            <!--
+                CHANGE YOUR PROFILE PICTURE HERE.
+
+                Put your picture in the same folder as this HTML file
+                and change "profile.jpg" to your picture's filename.
+
+                Example:
+                <img src="rolly.jpg" ...>
+            -->
+
+            <img
+                src="profile.jpg"
                 alt="Rolly P. Bagayan"
                 class="profile-picture"
             >
 
-            <h2>Rolly P. Bagayan</h2>
+            <h1>Hello, I'm <span>Rolly P. Bagayan</span></h1>
+
+            <h2>Student | Future Professional | Creative Learner</h2>
 
             <p>
-                Student | Future Professional | Web Enthusiast
+                Welcome to my personal portfolio. This website showcases
+                my background, education, skills, projects, and goals.
             </p>
 
-            <a href="#about" class="btn">Learn More About Me</a>
+            <a href="#about" class="btn">Explore My Portfolio</a>
+
         </div>
+
     </section>
 
-    <!-- About -->
+
+    <!-- ABOUT -->
     <section class="about" id="about">
-        <h2>About Me</h2>
 
-        <p>
-            Hello! My name is <strong>Rolly P. Bagayan</strong>.
-            Welcome to my personal portfolio. This website contains
-            information about my educational background, skills,
-            and personal interests.
-        </p>
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p>Get to know me</p>
+        </div>
+
+        <div class="about-container">
+
+            <div class="about-text">
+
+                <h3>Hi, I'm Rolly!</h3>
+
+                <p>
+                    My name is <strong>Rolly P. Bagayan</strong>.
+                    I am a motivated and hardworking individual who is
+                    interested in learning new things and developing
+                    my skills.
+                </p>
+
+                <p>
+                    I believe that education, dedication, and continuous
+                    learning are important in achieving my personal and
+                    professional goals.
+                </p>
+
+                <p>
+                    This portfolio represents my journey, achievements,
+                    skills, and future aspirations.
+                </p>
+
+            </div>
+
+            <div class="personal-info">
+
+                <p><strong>Name:</strong> Rolly P. Bagayan</p>
+
+                <p><strong>Age:</strong> Your Age</p>
+
+                <p><strong>Location:</strong> Your Location</p>
+
+                <p><strong>Email:</strong> your@email.com</p>
+
+                <p><strong>Phone:</strong> +63 XXX XXX XXXX</p>
+
+                <p><strong>Hobbies:</strong> Music, Sports, Technology</p>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- Educational Background -->
+
+    <!-- EDUCATION -->
     <section class="education" id="education">
-        <h2>Educational Background</h2>
+
+        <div class="section-title">
+            <h2>Education Background</h2>
+            <p>My academic journey</p>
+        </div>
 
         <div class="education-container">
 
+            <!-- EDIT THIS -->
             <div class="education-card">
-                <h3>College</h3>
-                <p><strong>School:</strong> Your College/University</p>
-                <p><strong>Course:</strong> Your Course</p>
-                <p><strong>Year:</strong> 20XX - Present</p>
+
+                <h3>College / University</h3>
+
+                <p class="school">
+                    Your School Name
+                </p>
+
+                <p class="year">
+                    2024 - Present
+                </p>
+
+                <p>
+                    Course/Program: Your Course
+                </p>
+
             </div>
 
+
+            <!-- EDIT THIS -->
             <div class="education-card">
+
                 <h3>Senior High School</h3>
-                <p><strong>School:</strong> Your Senior High School</p>
-                <p><strong>Strand:</strong> Your Strand</p>
-                <p><strong>Year:</strong> 20XX - 20XX</p>
+
+                <p class="school">
+                    Your Senior High School
+                </p>
+
+                <p class="year">
+                    2022 - 2024
+                </p>
+
+                <p>
+                    Strand: Your Strand
+                </p>
+
             </div>
 
+
+            <!-- EDIT THIS -->
             <div class="education-card">
+
                 <h3>Junior High School</h3>
-                <p><strong>School:</strong> Your Junior High School</p>
-                <p><strong>Year:</strong> 20XX - 20XX</p>
-            </div>
 
-            <div class="education-card">
-                <h3>Elementary</h3>
-                <p><strong>School:</strong> Your Elementary School</p>
-                <p><strong>Year:</strong> 20XX - 20XX</p>
+                <p class="school">
+                    Your Junior High School
+                </p>
+
+                <p class="year">
+                    2018 - 2022
+                </p>
+
             </div>
 
         </div>
+
     </section>
 
-    <!-- Skills -->
+
+    <!-- SKILLS -->
     <section class="skills" id="skills">
-        <h2>My Skills</h2>
+
+        <div class="section-title">
+
+            <h2>My Skills</h2>
+
+            <p>Things I can do</p>
+
+        </div>
+
 
         <div class="skills-container">
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">Communication</span>
-            <span class="skill">Teamwork</span>
+
+            <div class="skill-card">
+
+                <div class="icon">💻</div>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    HTML, CSS and basic JavaScript
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="icon">🎨</div>
+
+                <h3>Design</h3>
+
+                <p>
+                    Creative layouts and visual design
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="icon">📚</div>
+
+                <h3>Research</h3>
+
+                <p>
+                    Research, learning and information gathering
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="icon">🤝</div>
+
+                <h3>Teamwork</h3>
+
+                <p>
+                    Communication and collaboration
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="icon">🧠</div>
+
+                <h3>Problem Solving</h3>
+
+                <p>
+                    Logical thinking and finding solutions
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="icon">⏰</div>
+
+                <h3>Time Management</h3>
+
+                <p>
+                    Organizing tasks and meeting deadlines
+                </p>
+
+            </div>
+
         </div>
+
     </section>
 
-    <!-- Contact -->
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+
+        <div class="section-title">
+
+            <h2>My Projects</h2>
+
+            <p>Some of my work</p>
+
+        </div>
+
+
+        <div class="projects-container">
+
+            <div class="project-card">
+
+                <div class="project-image">
+                    💻
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Portfolio Website</h3>
+
+                    <p>
+                        A personal portfolio website created using
+                        HTML and CSS.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-image">
+                    🌐
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Web Project</h3>
+
+                    <p>
+                        Add your website or school project description here.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-image">
+                    📱
+                </div>
+
+                <div class="project-content">
+
+                    <h3>School Project</h3>
+
+                    <p>
+                        Add another project, activity, or achievement here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
     <section class="contact" id="contact">
-        <h2>Contact Me</h2>
 
-        <p>Email: your-email@example.com</p>
-        <p>Phone: +63 XXX XXX XXXX</p>
+        <div class="section-title">
+
+            <h2>Contact Me</h2>
+
+            <p>Let's connect</p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+            <p>
+                If you would like to get in touch with me,
+                you can contact me using the information below.
+            </p>
+
+
+            <div class="contact-info">
+
+                <div class="contact-item">
+                    📧 your@email.com
+                </div>
+
+                <div class="contact-item">
+                    📱 +63 XXX XXX XXXX
+                </div>
+
+                <div class="contact-item">
+                    📍 Your Location, Philippines
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- Footer -->
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 Rolly P. Bagayan. All Rights Reserved.</p>
+
+        <p>
+            © 2026 Rolly P. Bagayan. All Rights Reserved.
+        </p>
+
     </footer>
+
 
 </body>
 </html>
