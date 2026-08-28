@@ -7,10 +7,6 @@
     <title>Rolly P. Bagayan | Portfolio</title>
 
     <style>
-        /* =========================
-           GENERAL
-        ========================== */
-
         * {
             margin: 0;
             padding: 0;
@@ -20,28 +16,28 @@
         }
 
         body {
-            background-color: #f1f5f9;
+            background: #f1f5f9;
             color: #334155;
             line-height: 1.6;
         }
 
         /* =========================
            NAVIGATION
-        ========================== */
+        ========================= */
 
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
 
-            background-color: #0f172a;
+            background: #0f172a;
             padding: 15px 8%;
 
             display: flex;
             justify-content: space-between;
             align-items: center;
 
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
         }
 
         .logo {
@@ -53,7 +49,7 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
 
         nav ul li a {
@@ -69,7 +65,7 @@
 
         /* =========================
            HOME
-        ========================== */
+        ========================= */
 
         #home {
             min-height: 100vh;
@@ -84,7 +80,7 @@
 
             background: linear-gradient(
                 135deg,
-                #0f172a,
+                #020617,
                 #1d4ed8,
                 #0ea5e9
             );
@@ -99,8 +95,8 @@
         /* PROFILE PICTURE */
 
         .profile-picture {
-            width: 200px;
-            height: 200px;
+            width: 210px;
+            height: 210px;
 
             object-fit: cover;
 
@@ -111,7 +107,7 @@
             margin-bottom: 25px;
 
             box-shadow:
-                0 5px 25px rgba(0, 0, 0, 0.3);
+                0 8px 30px rgba(0,0,0,0.4);
         }
 
         .home-content h1 {
@@ -120,11 +116,9 @@
         }
 
         .home-content h3 {
+            color: #bae6fd;
             font-size: 24px;
             font-weight: normal;
-
-            color: #bae6fd;
-
             margin-bottom: 20px;
         }
 
@@ -136,10 +130,9 @@
         .btn {
             display: inline-block;
 
-            padding: 12px 28px;
+            padding: 13px 30px;
 
-            background-color: #38bdf8;
-
+            background: #38bdf8;
             color: white;
 
             text-decoration: none;
@@ -152,13 +145,13 @@
         }
 
         .btn:hover {
-            background-color: #0284c7;
+            background: #0284c7;
             transform: translateY(-3px);
         }
 
         /* =========================
-           GENERAL SECTIONS
-        ========================== */
+           GENERAL SECTION
+        ========================= */
 
         section {
             padding: 80px 10%;
@@ -180,32 +173,29 @@
 
         /* =========================
            ABOUT
-        ========================== */
+        ========================= */
 
         #about {
-            background-color: white;
+            background: white;
         }
 
         .about-container {
             max-width: 900px;
-
             margin: auto;
-
             text-align: center;
         }
 
         .about-container p {
             font-size: 18px;
-
             margin-bottom: 20px;
         }
 
         /* =========================
            HOBBIES
-        ========================== */
+        ========================= */
 
         #hobbies {
-            background-color: #f1f5f9;
+            background: #f1f5f9;
         }
 
         .hobbies-container {
@@ -217,12 +207,11 @@
             gap: 25px;
 
             max-width: 1000px;
-
             margin: auto;
         }
 
         .hobby-card {
-            background-color: white;
+            background: white;
 
             padding: 30px 20px;
 
@@ -231,7 +220,7 @@
             border-radius: 15px;
 
             box-shadow:
-                0 5px 15px rgba(0, 0, 0, 0.08);
+                0 5px 15px rgba(0,0,0,0.08);
 
             transition: 0.3s;
         }
@@ -240,37 +229,34 @@
             transform: translateY(-8px);
 
             box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.15);
+                0 10px 25px rgba(0,0,0,0.15);
         }
 
         .hobby-icon {
             font-size: 45px;
-
             margin-bottom: 15px;
         }
 
         .hobby-card h3 {
             color: #1e3a8a;
-
             margin-bottom: 10px;
         }
 
         /* =========================
            EDUCATION
-        ========================== */
+        ========================= */
 
         #education {
-            background-color: #e2e8f0;
+            background: #e2e8f0;
         }
 
         .education-container {
             max-width: 900px;
-
             margin: auto;
         }
 
         .education-item {
-            background-color: white;
+            background: white;
 
             padding: 25px;
 
@@ -281,7 +267,7 @@
             border-radius: 10px;
 
             box-shadow:
-                0 4px 12px rgba(0, 0, 0, 0.08);
+                0 4px 12px rgba(0,0,0,0.08);
 
             transition: 0.3s;
         }
@@ -292,31 +278,26 @@
 
         .education-item h3 {
             color: #2563eb;
-
             font-size: 22px;
-
             margin-bottom: 8px;
         }
 
         .education-item .year {
             color: #64748b;
-
             font-weight: bold;
-
             margin-bottom: 8px;
         }
 
         /* =========================
            SKILLS
-        ========================== */
+        ========================= */
 
         #skills {
-            background-color: white;
+            background: white;
         }
 
         .skills-container {
             max-width: 900px;
-
             margin: auto;
         }
 
@@ -326,20 +307,16 @@
 
         .skill-info {
             display: flex;
-
             justify-content: space-between;
-
             margin-bottom: 8px;
-
             font-weight: bold;
         }
 
         .progress-bar {
             width: 100%;
+            height: 15px;
 
-            height: 14px;
-
-            background-color: #e2e8f0;
+            background: #e2e8f0;
 
             border-radius: 20px;
 
@@ -349,12 +326,11 @@
         .progress {
             height: 100%;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #2563eb,
-                    #38bdf8
-                );
+            background: linear-gradient(
+                90deg,
+                #2563eb,
+                #38bdf8
+            );
 
             border-radius: 20px;
         }
@@ -372,7 +348,7 @@
         }
 
         .python {
-            width: 70%;
+            width: 60%;
         }
 
         .communication {
@@ -381,10 +357,10 @@
 
         /* =========================
            PROJECTS
-        ========================== */
+        ========================= */
 
         #projects {
-            background-color: #f1f5f9;
+            background: #f1f5f9;
         }
 
         .projects-container {
@@ -401,14 +377,14 @@
         }
 
         .project-card {
-            background-color: white;
+            background: white;
 
             border-radius: 15px;
 
             overflow: hidden;
 
             box-shadow:
-                0 5px 15px rgba(0, 0, 0, 0.08);
+                0 5px 15px rgba(0,0,0,0.08);
 
             transition: 0.3s;
         }
@@ -417,17 +393,16 @@
             transform: translateY(-8px);
 
             box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.15);
+                0 10px 25px rgba(0,0,0,0.15);
         }
 
         .project-image {
             width: 100%;
-
             height: 180px;
 
             object-fit: cover;
 
-            background-color: #cbd5e1;
+            background: #cbd5e1;
         }
 
         .project-content {
@@ -436,7 +411,6 @@
 
         .project-content h3 {
             color: #1d4ed8;
-
             margin-bottom: 10px;
         }
 
@@ -449,8 +423,7 @@
 
             padding: 8px 18px;
 
-            background-color: #2563eb;
-
+            background: #2563eb;
             color: white;
 
             text-decoration: none;
@@ -461,18 +434,16 @@
         }
 
         .project-btn:hover {
-            background-color: #1d4ed8;
+            background: #1d4ed8;
         }
 
         /* =========================
            CONTACT
-        ========================== */
+        ========================= */
 
         #contact {
-            background-color: #0f172a;
-
+            background: #0f172a;
             color: white;
-
             text-align: center;
         }
 
@@ -482,53 +453,44 @@
 
         .contact-container {
             max-width: 700px;
-
             margin: auto;
         }
 
         .contact-container p {
             font-size: 18px;
-
             margin: 12px;
         }
 
         .contact-container a {
             color: #38bdf8;
-
             text-decoration: none;
         }
 
         /* =========================
            FOOTER
-        ========================== */
+        ========================= */
 
         footer {
-            background-color: #020617;
-
+            background: #020617;
             color: white;
-
             text-align: center;
-
             padding: 20px;
         }
 
         /* =========================
-           RESPONSIVE DESIGN
-        ========================== */
+           MOBILE
+        ========================= */
 
         @media (max-width: 768px) {
 
             nav {
                 flex-direction: column;
-
                 gap: 15px;
             }
 
             nav ul {
                 flex-wrap: wrap;
-
                 justify-content: center;
-
                 gap: 12px;
             }
 
@@ -540,6 +502,11 @@
                 font-size: 19px;
             }
 
+            .profile-picture {
+                width: 170px;
+                height: 170px;
+            }
+
             section {
                 padding: 60px 6%;
             }
@@ -547,21 +514,14 @@
             .section-title {
                 font-size: 30px;
             }
-
-            .profile-picture {
-                width: 160px;
-                height: 160px;
-            }
         }
     </style>
 </head>
 
-
 <body>
 
-
     <!-- =========================
-         NAVIGATION BAR
+         NAVIGATION
     ========================== -->
 
     <nav>
@@ -571,56 +531,27 @@
         </div>
 
         <ul>
-
-            <li>
-                <a href="#home">Home</a>
-            </li>
-
-            <li>
-                <a href="#about">About</a>
-            </li>
-
-            <li>
-                <a href="#hobbies">Hobbies</a>
-            </li>
-
-            <li>
-                <a href="#education">Education</a>
-            </li>
-
-            <li>
-                <a href="#skills">Skills</a>
-            </li>
-
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
-
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
-
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
 
     </nav>
 
 
     <!-- =========================
-         HOME SECTION
+         HOME
     ========================== -->
 
     <section id="home">
 
         <div class="home-content">
 
-            <!--
-                PUT YOUR PHOTO IN THE SAME FOLDER
-                AS THIS HTML FILE.
-
-                Rename your picture to:
-                profile.jpg
-            -->
-
+            <!-- YOUR PROFILE PICTURE -->
             <img
                 src="profile.jpg"
                 alt="Rolly P. Bagayan"
@@ -637,8 +568,8 @@
 
             <p>
                 Welcome to my personal portfolio website.
-                Explore my background, hobbies, education,
-                skills, and projects.
+                Here you can learn more about me, my hobbies,
+                education, skills, and projects.
             </p>
 
             <a href="#about" class="btn">
@@ -665,21 +596,22 @@
             <p>
                 Hello! My name is
                 <strong>Rolly P. Bagayan</strong>.
-                I am a student interested in technology,
-                programming, and web development.
+                I am a student who is interested in
+                technology, programming, and web development.
             </p>
 
             <p>
-                I enjoy learning new skills and creating
-                simple projects using technology. I am
-                continuously improving my knowledge and
-                abilities in programming.
+                I enjoy learning new things, developing
+                my skills, and creating projects using
+                technology. I am always interested in
+                improving myself and gaining new knowledge.
             </p>
 
             <p>
-                My goal is to become more skilled in
-                technology and create useful and creative
-                projects in the future.
+                My goal is to continue developing my
+                programming and technical skills and
+                create useful and creative projects
+                in the future.
             </p>
 
         </div>
@@ -699,96 +631,64 @@
 
         <div class="hobbies-container">
 
-
             <div class="hobby-card">
+                <div class="hobby-icon">🎮</div>
 
-                <div class="hobby-icon">
-                    🎮
-                </div>
-
-                <h3>
-                    Gaming
-                </h3>
+                <h3>Gaming</h3>
 
                 <p>
                     I enjoy playing video games
                     during my free time.
                 </p>
-
             </div>
 
 
             <div class="hobby-card">
+                <div class="hobby-icon">🎵</div>
 
-                <div class="hobby-icon">
-                    🎵
-                </div>
-
-                <h3>
-                    Listening to Music
-                </h3>
+                <h3>Listening to Music</h3>
 
                 <p>
                     I enjoy listening to different
                     kinds of music.
                 </p>
-
             </div>
 
 
             <div class="hobby-card">
+                <div class="hobby-icon">💻</div>
 
-                <div class="hobby-icon">
-                    💻
-                </div>
-
-                <h3>
-                    Programming
-                </h3>
+                <h3>Programming</h3>
 
                 <p>
-                    I enjoy learning how to code
-                    and create websites.
+                    I enjoy learning programming
+                    and creating websites.
                 </p>
-
             </div>
 
 
             <div class="hobby-card">
+                <div class="hobby-icon">🏊</div>
 
-                <div class="hobby-icon">
-                    🎬
-                </div>
-
-                <h3>
-                    Watching Movies
-                </h3>
+                <h3>Swimming</h3>
 
                 <p>
-                    I like watching movies and
-                    entertainment shows.
+                    I enjoy spending time outdoors
+                    and swimming.
                 </p>
-
             </div>
 
 
             <div class="hobby-card">
+                <div class="hobby-icon">🏀</div>
 
-                <div class="hobby-icon">
-                    🏀
-                </div>
-
-                <h3>
-                    Sports
-                </h3>
+                <h3>Sports</h3>
 
                 <p>
                     I enjoy playing and watching
                     different sports.
                 </p>
-
             </div>
-
 
         </div>
 
@@ -796,7 +696,7 @@
 
 
     <!-- =========================
-         EDUCATION BACKGROUND
+         EDUCATION
     ========================== -->
 
     <section id="education">
@@ -807,13 +707,12 @@
 
         <div class="education-container">
 
-
             <!-- COLLEGE -->
 
             <div class="education-item">
 
                 <h3>
-                    Colleges 
+                    College / University
                 </h3>
 
                 <p class="year">
@@ -821,19 +720,14 @@
                 </p>
 
                 <p>
-                    <strong>school:</strong>
-                      St. Rose Colleges Foundation Inc. 
-                </p>
-
-                <p>
-                    <strong>Course:</strong>
-                    Bachelor of Science in Computer Science
+                    <strong>School:</strong>
+                    St. Rose Colleges Foundation Inc.
                 </p>
 
             </div>
 
 
-            <!-- HIGH SCHOOL / SENIOR HIGH SCHOOL -->
+            <!-- HIGH SCHOOL -->
 
             <div class="education-item">
 
@@ -872,7 +766,6 @@
 
             </div>
 
-
         </div>
 
     </section>
@@ -890,21 +783,15 @@
 
         <div class="skills-container">
 
-
             <div class="skill">
 
                 <div class="skill-info">
-
                     <span>HTML</span>
-
                     <span>90%</span>
-
                 </div>
 
                 <div class="progress-bar">
-
                     <div class="progress html"></div>
-
                 </div>
 
             </div>
@@ -913,17 +800,12 @@
             <div class="skill">
 
                 <div class="skill-info">
-
                     <span>CSS</span>
-
                     <span>80%</span>
-
                 </div>
 
                 <div class="progress-bar">
-
                     <div class="progress css"></div>
-
                 </div>
 
             </div>
@@ -932,17 +814,12 @@
             <div class="skill">
 
                 <div class="skill-info">
-
                     <span>JavaScript</span>
-
                     <span>65%</span>
-
                 </div>
 
                 <div class="progress-bar">
-
                     <div class="progress javascript"></div>
-
                 </div>
 
             </div>
@@ -951,17 +828,12 @@
             <div class="skill">
 
                 <div class="skill-info">
-
                     <span>Python</span>
-
-                    <span>70%</span>
-
+                    <span>60%</span>
                 </div>
 
                 <div class="progress-bar">
-
                     <div class="progress python"></div>
-
                 </div>
 
             </div>
@@ -970,21 +842,15 @@
             <div class="skill">
 
                 <div class="skill-info">
-
                     <span>Communication</span>
-
                     <span>85%</span>
-
                 </div>
 
                 <div class="progress-bar">
-
                     <div class="progress communication"></div>
-
                 </div>
 
             </div>
-
 
         </div>
 
@@ -1003,15 +869,9 @@
 
         <div class="projects-container">
 
-
             <!-- PROJECT 1 -->
 
             <div class="project-card">
-
-                <!--
-                    Replace project1.jpg
-                    with your project screenshot.
-                -->
 
                 <img
                     src="project1.jpg"
@@ -1056,8 +916,8 @@
                     </h3>
 
                     <p>
-                        A simple student website
-                        created as a school project.
+                        A simple website created
+                        for a school project.
                     </p>
 
                     <a href="#" class="project-btn">
@@ -1075,7 +935,7 @@
 
                 <img
                     src="project3.jpg"
-                    alt="Simple Calculator"
+                    alt="Calculator Project"
                     class="project-image"
                 >
 
@@ -1116,7 +976,7 @@
                     </h3>
 
                     <p>
-                        Add your own school project
+                        Add your school project
                         description here.
                     </p>
 
@@ -1127,7 +987,6 @@
                 </div>
 
             </div>
-
 
         </div>
 
@@ -1149,13 +1008,13 @@
             <p>
                 📧 Email:
                 <a href="mailto:your-email@gmail.com">
-                    your-rollybagayan04@gmail.com
+                    your-rollybagayan03@gmail.com
                 </a>
             </p>
 
             <p>
                 📱 Phone:
-                09453149288
+                0945-314-9288
             </p>
 
             <p>
@@ -1173,7 +1032,7 @@
             <p>
                 📘 Facebook:
                 <a href="#">
-                    Rolly P. Bagayan
+                    Rolly P. Bagayab
                 </a>
             </p>
 
@@ -1194,7 +1053,6 @@
         </p>
 
     </footer>
-
 
 </body>
 </html>
